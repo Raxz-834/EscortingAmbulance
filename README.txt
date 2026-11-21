@@ -26,6 +26,7 @@ Struktur multi-halaman:
 - edukasi.html — Penanganan awal kecelakaan jalan
 - hukum.html — Dasar hukum prioritas ambulans
 - admin.html — Panel pengelolaan admin
+- laporan.html — Form laporan kejadian, pratinjau A4, riwayat, cetak, dan simpan PDF
 
 Calon anggota tidak tampil di halaman publik. Data baru muncul di anggota.html setelah statusnya diubah menjadi Diterima oleh admin. Data sensitif tidak ditampilkan.
 
@@ -39,6 +40,9 @@ Panel admin:
 - Admin dapat mengisi satu tautan grup utama anggota V.A.B.E.
 - Tombol Terima & WA mengubah status menjadi Diterima dan membuka pesan WhatsApp kelulusan beserta tautan grup bila sudah tersedia.
 - Beberapa pendaftar dapat dipilih sekaligus. Tombol Terima pilihan & bagikan menyiapkan pengumuman WhatsApp yang mencantumkan seluruh ID Volunteer yang lulus.
+- Menu Laporan kejadian menyediakan form, pratinjau langsung, riwayat lokal, tombol bagikan, cetak, dan Simpan PDF.
+- Saat laporan disimpan, file PDF berdesain A4 langsung dibuat dan diunduh. Tombol Simpan PDF dapat dipakai untuk mengunduh ulang.
+- Pilihan kota/kabupaten, kecamatan, serta desa/kelurahan dimuat otomatis; hanya jalan, nomor, atau patokan yang diketik manual.
 - PIN dan penyimpanan browser hanya cocok untuk demo. Penggunaan publik membutuhkan backend, database, autentikasi aman, dan pembatasan hak akses.
 
 Kontak darurat yang ditampilkan:
