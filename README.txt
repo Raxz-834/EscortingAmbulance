@@ -41,6 +41,9 @@ Panel admin:
 - Tombol Terima & WA mengubah status menjadi Diterima dan membuka pesan WhatsApp kelulusan beserta tautan grup bila sudah tersedia.
 - Beberapa pendaftar dapat dipilih sekaligus. Tombol Terima pilihan & bagikan menyiapkan pengumuman WhatsApp yang mencantumkan seluruh ID Volunteer yang lulus.
 - Menu Laporan kejadian menyediakan form, pratinjau langsung, riwayat lokal, tombol bagikan, cetak, dan Simpan PDF.
+- Alur laporan terdiri dari dua halaman keadaan: form terlebih dahulu, lalu hasil laporan berdesain lengkap setelah disimpan.
+- Pada hasil laporan, tombol Simpan memberikan pilihan PDF atau foto. Fitur Bagikan mengirim file desain melalui menu berbagi perangkat ke WhatsApp atau Gmail bila didukung.
+- Data laporan tampil pada tab Data laporan di panel admin dengan tindakan Buka, Edit, Unduh, dan Hapus.
 - Saat laporan disimpan, file PDF berdesain A4 langsung dibuat dan diunduh. Tombol Simpan PDF dapat dipakai untuk mengunduh ulang.
 - Pilihan kota/kabupaten, kecamatan, serta desa/kelurahan dimuat otomatis; hanya jalan, nomor, atau patokan yang diketik manual.
 - PIN dan penyimpanan browser hanya cocok untuk demo. Penggunaan publik membutuhkan backend, database, autentikasi aman, dan pembatasan hak akses.
