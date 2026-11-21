@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Anggota V.A.B.E</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+<div class="wrap bar">
+<a class="brand" href="index.html">
+<img src="logo-vabe.jpeg" alt="Logo V.A.B.E">
+<span>V.A.B.E<small>DATA ANGGOTA</small>
+</span>
+</a>
+<nav class="nav">
+<a href="index.html">Beranda</a>
+<a href="daftar.html">Pendaftaran</a>
+<a class="active" href="anggota.html">Anggota</a>
+<a href="visi-misi.html">Visi misi</a>
+<a href="call-center.html">Call center</a>
+</nav>
+</div>
+</header>
+  <main>
+    <section class="page-head">
+<div class="wrap">
+<div class="eyebrow">Data publik</div>
+<h1>Anggota V.A.B.E</h1>
+<p class="lead">Hanya anggota yang sudah diterima oleh admin yang ditampilkan.</p>
+</div>
+</section>
+    <section class="section">
+<div class="wrap">
+<div class="org" aria-label="Susunan kepengurusan V.A.B.E">
+<div class="level">
+<div class="node" data-role="Ketua">
+<span>Ketua</span>
+<strong>Belum diisi</strong>
+</div>
+</div>
+<div class="level">
+<div class="node" data-role="Wakil Ketua">
+<span>Wakil Ketua</span>
+<strong>Belum diisi</strong>
+</div>
+</div>
+<div class="level">
+<div class="node" data-role="Sekretaris">
+<span>Sekretaris</span>
+<strong>Belum diisi</strong>
+</div>
+<div class="node" data-role="Bendahara">
+<span>Bendahara</span>
+<strong>Belum diisi</strong>
+</div>
+<div class="node" data-role="Koordinator Lapangan">
+<span>Koordinator Lapangan</span>
+<strong>Belum diisi</strong>
+</div>
+<div class="node" data-role="Divisi Edukasi">
+<span>Divisi Edukasi</span>
+<strong>Belum diisi</strong>
+</div>
+</div>
+</div>
+<h2 style="margin-top:42px">Anggota diterima</h2>
+<p class="intro">Data yang ditampilkan: ID, nama, status SIM, domisili, dan peran.</p>
+<div class="members" id="members">
+</div>
+</div>
+</section>
+  </main>
+  <footer class="footer">
+<div class="wrap foot">
+<span>V.A.B.E Bandung</span>
+<a href="daftar.html">Daftar</a>
+</div>
+</footer>
+  <nav class="dock">
+<a href="index.html">⌂<br>Beranda</a>
+<a href="daftar.html">＋<br>Daftar</a>
+<a class="active" href="anggota.html">♙<br>Anggota</a>
+<a href="call-center.html">☎<br>Darurat</a>
+</nav>
+  <script>
+    const esc=v=>String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+    let data=[];
+    try{data=JSON.parse(localStorage.getItem('vabePendaftar')||'[]').filter(m=>m.status==='Diterima')}catch{}
+    document.getElementById('members').innerHTML=data.length?data.map(m=>{
+      const simAktif=Boolean(String(m.sim||'').trim());
+      return `<article class="member"><strong class="member-id">${esc(m.registrationId)}</strong><h3>${esc(m.name)}</h3><div class="member-meta"><div><span>Status SIM</span><b class="sim-status ${simAktif?'sim-active':'sim-inactive'}">${simAktif?'Aktif':'Tidak aktif'}</b></div><div><span>Domisili</span><b>${esc(m.city||'-')}</b></div><div><span>Peran</span><b>${esc(m.role||'-')}</b></div></div></article>`
+    }).join(''):'<div class="empty">Belum ada anggota yang diterima.</div>';
+    let pengurus={};
+    try{pengurus=JSON.parse(localStorage.getItem('vabePengurus')||'{}')}catch{}
+    document.querySelectorAll('[data-role]').forEach(node=>{const person=pengurus[node.dataset.role];if(person?.name)node.querySelector('strong').textContent=person.name});
+  </script>
+</body>
+</html>
+
+

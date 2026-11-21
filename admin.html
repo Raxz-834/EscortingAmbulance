@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Panel Admin V.A.B.E</title>
+  <style>
+    :root{--navy:#10223b;--red:#d92f46;--paper:#f4f6f9;--line:#dce2ea;--muted:#617084;--white:#fff;--green:#197047;--amber:#8a6200}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--navy);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}.hidden{display:none!important}.login{min-height:100vh;display:grid;place-items:center;padding:22px}.login-card{width:min(410px,100%);background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px}.identity{display:flex;align-items:center;gap:13px;margin-bottom:24px}.identity img{width:56px;height:56px;object-fit:cover;border-radius:14px;border:2px solid var(--red);background:#000}.identity strong{display:block;font-size:1.2rem}.identity span{font-size:.85rem;color:var(--muted)}h1{font-size:1.7rem;margin:0 0 8px}.hint,.note{color:var(--muted);font-size:.9rem}.field{display:grid;gap:7px;margin:18px 0}.field label{font-weight:750}.field input{width:100%;border:1px solid #c8d0db;border-radius:12px;padding:13px;font-size:16px}.btn{border:0;border-radius:12px;padding:12px 16px;background:var(--red);color:#fff;font-weight:800;cursor:pointer}.btn.block{width:100%}.error{color:#a71931;font-size:.9rem;margin-top:10px}.shell{min-height:100vh}.topbar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line)}.topbar-inner{max-width:1180px;margin:auto;min-height:68px;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}.topbar .identity{margin:0}.topbar .identity img{width:42px;height:42px;border-radius:10px}.ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}main{max-width:1180px;margin:auto;padding:28px 20px 60px}.welcome{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:22px}.welcome h1{font-size:2rem}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-bottom:24px}.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:19px}.stat strong{display:block;font-size:1.9rem}.stat span{color:var(--muted);font-size:.9rem}.tabs{display:flex;gap:8px;margin-bottom:16px}.tab{border:1px solid var(--line);background:#fff;padding:10px 15px;border-radius:999px;color:var(--navy);font-weight:750;cursor:pointer}.tab.active{background:var(--navy);color:#fff}.panel{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.panel-head{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}.panel-head h2{margin:0;font-size:1.25rem}.filters{display:flex;gap:8px}.filters select{border:1px solid var(--line);border-radius:10px;padding:9px;background:#fff}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:820px}th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);font-size:.9rem}th{background:#f8fafc;color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.05em}.badge{display:inline-block;border-radius:999px;padding:5px 9px;font-weight:800;font-size:.76rem}.pending{background:#fff4d7;color:var(--amber)}.accepted{background:#e4f6ec;color:var(--green)}.rejected{background:#ffe8eb;color:#9b2033}.actions{display:flex;gap:6px}.small{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 9px;font-size:.78rem;font-weight:750;cursor:pointer}.small.ok{color:var(--green)}.small.no{color:#9b2033}.empty{text-align:center!important;color:var(--muted);padding:30px!important}.org-form{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;padding:20px}.org-item{border:1px solid var(--line);border-radius:14px;padding:16px}.org-item strong{display:block;margin-bottom:10px}.org-item label{display:block;font-size:.8rem;color:var(--muted);margin:8px 0 4px}.org-item input{width:100%;border:1px solid #cbd3dd;border-radius:9px;padding:10px}.savebar{display:flex;justify-content:flex-end;padding:0 20px 20px}.warning{background:#fff7df;color:#704f00;border:1px solid #f0d684;border-radius:12px;padding:13px 15px;margin-bottom:18px;font-size:.88rem}
+    @media(max-width:700px){.topbar-inner,main{padding-left:14px;padding-right:14px}.topbar .identity span{display:none}.welcome{display:block}.welcome .note{margin-top:5px}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}.tabs{overflow:auto}.org-form{grid-template-columns:1fr;padding:14px}.panel-head{align-items:flex-start;flex-direction:column}.filters{width:100%}.filters select{width:100%}}
+    .topbar{background:linear-gradient(90deg,#fff,#f5f8ff)}.login{background:radial-gradient(circle at top right,#ffd7de,transparent 36%),linear-gradient(145deg,#edf5ff,#f8fafc)}.login-card{box-shadow:0 24px 60px rgba(16,34,59,.14)}.stat{position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(16,34,59,.06)}.stat:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px}.stat:nth-child(1):before{background:#2468b1}.stat:nth-child(2):before{background:#19a36d}.stat:nth-child(3):before{background:#e0a11b}.stat:nth-child(1) strong{color:#2468b1}.stat:nth-child(2) strong{color:#198052}.stat:nth-child(3) strong{color:#9a6900}.panel{box-shadow:0 12px 34px rgba(16,34,59,.06)}.tab{transition:.2s}.tab:hover{border-color:#8aa5c6}.tab.active{background:linear-gradient(135deg,#173d6c,#10223b)}.btn{transition:.2s}.btn:hover{filter:brightness(.96);transform:translateY(-1px)}.org-item{background:linear-gradient(145deg,#fff,#f8fbff)}
+  </style>
+</head>
+<body>
+  <section class="login" id="loginView">
+<div class="login-card">
+<div class="identity">
+<img src="logo-vabe.jpeg" alt="Logo V.A.B.E">
+<div>
+<strong>Panel Admin V.A.B.E</strong>
+<span>Volunteer Ambulance Bandung Emergency</span>
+</div>
+</div>
+<h1>Masuk sebagai admin</h1>
+<p class="hint">Gunakan PIN demo untuk membuka panel pada perangkat ini.</p>
+<form id="loginForm">
+<div class="field">
+<label for="pin">PIN admin</label>
+<input id="pin" type="password" inputmode="numeric" autocomplete="off" required placeholder="Masukkan PIN">
+</div>
+<button class="btn block" type="submit">Masuk ke panel</button>
+<div class="error hidden" id="loginError">PIN tidak sesuai.</div>
+</form>
+<p class="hint">PIN demo awal: <strong>2026</strong>. PIN ini bukan keamanan untuk website publik.</p>
+<a href="index.html">Kembali ke website</a>
+</div>
+</section>
+
+  <div class="shell hidden" id="adminView">
+<header class="topbar">
+<div class="topbar-inner">
+<div class="identity">
+<img src="logo-vabe.jpeg" alt="Logo V.A.B.E">
+<div>
+<strong>Admin V.A.B.E</strong>
+<span>Pengelolaan anggota dan pengurus</span>
+</div>
+</div>
+<button class="btn ghost" id="logoutBtn">Keluar</button>
+</div>
+</header>
+<main>
+<div class="welcome">
+<div>
+<h1>Ringkasan organisasi</h1>
+<div class="note">Data lokal pada browser perangkat ini</div>
+</div>
+<a class="btn ghost" href="index.html">Lihat website</a>
+</div>
+<div class="warning">Panel ini adalah demo statis. Untuk digunakan banyak admin atau perangkat, diperlukan backend, database, autentikasi aman, dan pencatatan aktivitas.</div>
+<div class="stats">
+<div class="stat">
+<strong id="totalCount">0</strong>
+<span>Total pendaftar</span>
+</div>
+<div class="stat">
+<strong id="acceptedCount">0</strong>
+<span>Anggota diterima</span>
+</div>
+<div class="stat">
+<strong id="pendingCount">0</strong>
+<span>Menunggu verifikasi</span>
+</div>
+</div>
+<div class="tabs">
+<button class="tab active" data-target="membersPanel">Data anggota</button>
+<button class="tab" data-target="orgPanel">Data kepengurusan</button>
+<button class="tab" data-target="groupPanel">Grup WhatsApp</button>
+</div>
+
+    <section class="panel" id="membersPanel">
+<div class="panel-head">
+<div>
+<h2>Pendaftaran anggota</h2>
+<span class="note">Pilih beberapa data untuk penerimaan massal</span>
+</div>
+<div class="filters">
+<button class="btn" id="bulkAcceptBtn" type="button">Terima pilihan & bagikan</button>
+<select id="statusFilter">
+<option value="Semua">Semua status</option>
+<option>Menunggu verifikasi</option>
+<option>Diterima</option>
+<option>Ditolak</option>
+</select>
+</div>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>
+<input type="checkbox" id="selectAll" aria-label="Pilih semua">
+</th>
+<th>ID Volunteer</th>
+<th>Nama</th>
+<th>Tanggal lahir</th>
+<th>Domisili</th>
+<th>Peran</th>
+<th>No. SIM</th>
+<th>WhatsApp</th>
+<th>Status</th>
+<th>Tindakan</th>
+</tr>
+</thead>
+<tbody id="adminMemberRows">
+</tbody>
+</table>
+</div>
+</section>
+
+    <section class="panel hidden" id="orgPanel">
+<div class="panel-head">
+<h2>Data kepengurusan</h2>
+<span class="note">Isi nama dan kontak pengurus resmi</span>
+</div>
+<form id="orgForm">
+<div class="org-form" id="orgFields">
+</div>
+<div class="savebar">
+<button class="btn" type="submit">Simpan kepengurusan</button>
+</div>
+</form>
+</section>
+    <section class="panel hidden" id="groupPanel">
+<div class="panel-head">
+<h2>Grup WhatsApp anggota V.A.B.E</h2>
+<span class="note">Satu grup untuk semua anggota</span>
+</div>
+<form id="groupForm">
+<div class="org-form">
+<div class="org-item">
+<strong>Grup utama V.A.B.E</strong>
+<label for="groupLink">Tautan undangan WhatsApp</label>
+<input id="groupLink" type="url" placeholder="https://chat.whatsapp.com/...">
+<p class="note">Boleh dikosongkan dan diisi setelah grup tersedia.</p>
+</div>
+</div>
+<div class="savebar">
+<button class="btn" type="submit">Simpan tautan grup</button>
+</div>
+</form>
+</section>
+  </main>
+</div>
+  <script>
+    const memberKey='vabePendaftar',orgKey='vabePengurus',groupKey='vabeGroupLinks',sessionKey='vabeAdminSession';
+    const roles=['Ketua','Wakil Ketua','Sekretaris','Bendahara','Koordinator Lapangan','Divisi Edukasi'];
+    const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+    const read=(key,fallback=[])=>{try{return JSON.parse(localStorage.getItem(key)||JSON.stringify(fallback))}catch{return fallback}};
+    const write=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
+    const showAdmin=()=>{document.getElementById('loginView').classList.add('hidden');document.getElementById('adminView').classList.remove('hidden');renderMembers();renderOrg();renderGroupSettings()};
+    document.getElementById('loginForm').addEventListener('submit',e=>{e.preventDefault();if(document.getElementById('pin').value==='2026'){sessionStorage.setItem(sessionKey,'1');showAdmin()}else document.getElementById('loginError').classList.remove('hidden')});
+    document.getElementById('logoutBtn').addEventListener('click',()=>{sessionStorage.removeItem(sessionKey);location.reload()});
+    document.querySelectorAll('.tab').forEach(tab=>tab.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('main .panel').forEach(p=>p.classList.add('hidden'));tab.classList.add('active');document.getElementById(tab.dataset.target).classList.remove('hidden')}));
+    function renderMembers(){const members=ensureVolunteerIds(read(memberKey)),filter=document.getElementById('statusFilter').value,shown=members.map((m,i)=>({...m,_i:i,status:m.status||'Menunggu verifikasi'})).filter(m=>filter==='Semua'||m.status===filter);write(memberKey,members);document.getElementById('totalCount').textContent=members.length;document.getElementById('acceptedCount').textContent=members.filter(m=>(m.status||'Menunggu verifikasi')==='Diterima').length;document.getElementById('pendingCount').textContent=members.filter(m=>(m.status||'Menunggu verifikasi')==='Menunggu verifikasi').length;document.getElementById('adminMemberRows').innerHTML=shown.length?shown.map(m=>`<tr><td><input class="member-select" type="checkbox" value="${m._i}" aria-label="Pilih ${esc(m.registrationId)}"></td><td><strong>${esc(m.registrationId)}</strong></td><td>${esc(m.name)}</td><td>${esc(m.birthDate||'-')}</td><td>${esc(m.city)}</td><td>${esc(m.role)}</td><td>${esc(m.sim||'-')}</td><td>${esc(m.wa||'-')}</td><td><span class="badge ${m.status==='Diterima'?'accepted':m.status==='Ditolak'?'rejected':'pending'}">${esc(m.status)}</span></td><td><div class="actions"><button class="small ok" onclick="acceptAndWhatsApp(${m._i})">Terima & WA</button><button class="small no" onclick="setStatus(${m._i},'Ditolak')">Tolak</button><button class="small" onclick="removeMember(${m._i})">Hapus</button></div></td></tr>`).join(''):'<tr><td colspan="10" class="empty">Belum ada data untuk ditampilkan.</td></tr>';document.getElementById('selectAll').checked=false}
+    function setStatus(i,status){const data=read(memberKey);data[i].status=status;write(memberKey,data);renderMembers()}
+    function normalizePhone(value){let phone=String(value||'').replace(/\D/g,'');if(phone.startsWith('0'))phone='62'+phone.slice(1);return phone}
+    function ensureVolunteerIds(data){let next=1,used=new Set(data.map(m=>Number(String(m.registrationId||'').match(/^Volunteer #(\d+)$/)?.[1]||0)).filter(Boolean));return data.map(m=>{if(/^Volunteer #\d+$/.test(m.registrationId||''))return m;while(used.has(next))next++;const registrationId=`Volunteer #${String(next).padStart(3,'0')}`;used.add(next++);return{...m,registrationId}})}
+    function acceptAndWhatsApp(i){const data=ensureVolunteerIds(read(memberKey)),member=data[i],groupLink=read(groupKey,{}).link;member.status='Diterima';write(memberKey,data);renderMembers();const message=`Halo ${member.name}, selamat! ${member.registrationId} telah lulus dan diterima menjadi anggota V.A.B.E.${groupLink?` Silakan bergabung ke grup utama: ${groupLink}`:' Tautan grup akan dikirim menyusul oleh admin.'}`;const phone=normalizePhone(member.wa);if(phone)window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`,'_blank');else alert('Status diterima, tetapi nomor WhatsApp belum tersedia.')}
+    function acceptSelected(){const selected=[...document.querySelectorAll('.member-select:checked')].map(input=>Number(input.value));if(!selected.length){alert('Pilih minimal satu pendaftar.');return}const data=ensureVolunteerIds(read(memberKey));selected.forEach(i=>{if(data[i])data[i].status='Diterima'});write(memberKey,data);const ids=selected.map(i=>data[i]?.registrationId).filter(Boolean);const groupLink=read(groupKey,{}).link;const message=`Selamat! Calon anggota dengan ID ${ids.join(', ')} telah lulus dan resmi menjadi anggota V.A.B.E.${groupLink?` Grup utama anggota: ${groupLink}`:''}`;renderMembers();window.open(`https://wa.me/?text=${encodeURIComponent(message)}`,'_blank')}
+    function removeMember(i){if(!confirm('Hapus data pendaftar ini?'))return;const data=read(memberKey);data.splice(i,1);write(memberKey,data);renderMembers()}
+    document.getElementById('statusFilter').addEventListener('change',renderMembers);
+    function renderOrg(){const data=read(orgKey,{});document.getElementById('orgFields').innerHTML=roles.map((role,i)=>`<div class="org-item"><strong>${esc(role)}</strong><label for="name${i}">Nama</label><input id="name${i}" data-role="${esc(role)}" data-field="name" value="${esc(data[role]?.name||'')}" placeholder="Nama pengurus"><label for="contact${i}">Kontak</label><input id="contact${i}" data-role="${esc(role)}" data-field="contact" value="${esc(data[role]?.contact||'')}" placeholder="Nomor atau email"></div>`).join('')}
+    document.getElementById('orgForm').addEventListener('submit',e=>{e.preventDefault();const data={};document.querySelectorAll('#orgFields input').forEach(input=>{data[input.dataset.role]??={};data[input.dataset.role][input.dataset.field]=input.value.trim()});write(orgKey,data);alert('Data kepengurusan tersimpan di browser.')});
+    function renderGroupSettings(){document.getElementById('groupLink').value=read(groupKey,{}).link||''}
+    document.getElementById('groupForm').addEventListener('submit',e=>{e.preventDefault();write(groupKey,{link:document.getElementById('groupLink').value.trim()});alert('Tautan grup WhatsApp tersimpan.')});
+    document.getElementById('bulkAcceptBtn').addEventListener('click',acceptSelected);
+    document.getElementById('selectAll').addEventListener('change',e=>document.querySelectorAll('.member-select').forEach(input=>input.checked=e.target.checked));
+    if(sessionStorage.getItem(sessionKey)==='1')showAdmin();
+  </script>
+</body>
+</html>
+
+

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pendaftaran V.A.B.E</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+<div class="wrap bar">
+<a class="brand" href="index.html">
+<img src="logo-vabe.jpeg" alt="Logo">
+<span>V.A.B.E<small>REGISTRASI ANGGOTA</small>
+</span>
+</a>
+<nav class="nav">
+<a href="index.html">Beranda</a>
+<a class="active" href="daftar.html">Pendaftaran</a>
+<a href="anggota.html">Anggota</a>
+<a href="visi-misi.html">Visi misi</a>
+<a href="call-center.html">Call center</a>
+</nav>
+</div>
+</header>
+<main>
+<section class="page-head">
+<div class="wrap">
+<div class="eyebrow">Registrasi</div>
+<h1>Daftar Volunteer</h1>
+<p class="lead">Data calon hanya masuk ke panel admin dan tidak ditampilkan sebelum diterima.</p>
+</div>
+</section>
+<section class="section">
+<div class="wrap">
+<form class="panel" id="form">
+<div class="form-grid">
+<div class="field">
+<label>Nama lengkap</label>
+<input id="name" required>
+</div>
+<div class="field">
+<label>Tanggal lahir</label>
+<input id="birthDate" type="date" required>
+</div>
+<div class="field">
+<label>Domisili</label>
+<input id="city" required>
+</div>
+<div class="field">
+<label>Peran</label>
+<select id="role" required>
+<option value="">Pilih peran</option>
+<option>Escorting</option>
+<option>Driver Ambulance</option>
+</select>
+</div>
+<div class="field">
+<label>Nomor SIM</label>
+<input id="sim" required>
+</div>
+<div class="field">
+<label>Nomor WhatsApp</label>
+<input id="wa" inputmode="tel" required>
+</div>
+<div class="field full privacy">
+<label>
+<input type="checkbox" required> Data benar dan bersedia ditinjau admin.</label>
+</div>
+<div class="field full">
+<button class="btn">Kirim registrasi</button>
+<div class="notice" id="notice">
+</div>
+</div>
+</div>
+</form>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="wrap foot">
+<span>Data calon bersifat privat.</span>
+<a href="index.html">Beranda</a>
+</div>
+</footer>
+<nav class="dock">
+<a href="index.html">⌂<br>Beranda</a>
+<a class="active" href="daftar.html">＋<br>Daftar</a>
+<a href="anggota.html">♙<br>Anggota</a>
+<a href="call-center.html">☎<br>Darurat</a>
+</nav>
+<script>const key='vabePendaftar',formEl=document.getElementById('form'),noticeEl=document.getElementById('notice'),field=id=>document.getElementById(id),read=()=>{try{return JSON.parse(localStorage.getItem(key)||'[]')}catch{return[]}},normalize=d=>{let n=1,u=new Set(d.map(m=>Number(String(m.registrationId||'').match(/^Volunteer #(\d+)$/)?.[1]||0)).filter(Boolean));return d.map(m=>{if(/^Volunteer #\d+$/.test(m.registrationId||''))return m;while(u.has(n))n++;let registrationId=`Volunteer #${String(n).padStart(3,'0')}`;u.add(n++);return{...m,registrationId}})};formEl.addEventListener('submit',e=>{e.preventDefault();let d=normalize(read()),max=d.reduce((n,m)=>Math.max(n,Number(m.registrationId.match(/\d+/)?.[0]||0)),0),registrationId=`Volunteer #${String(max+1).padStart(3,'0')}`;d.push({registrationId,name:field('name').value.trim(),birthDate:field('birthDate').value,city:field('city').value.trim(),role:field('role').value,sim:field('sim').value.trim(),wa:field('wa').value.trim(),status:'Menunggu verifikasi',createdAt:new Date().toISOString()});localStorage.setItem(key,JSON.stringify(d));noticeEl.innerHTML=`<strong>${registrationId}</strong><br>Data sedang ditinjau. Jika diterima, admin akan menghubungi WhatsApp Anda dan mengirim tautan grup utama V.A.B.E.`;noticeEl.classList.add('show');formEl.reset()});</script>
+</body>
+</html>
+
+
